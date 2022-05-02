@@ -22,8 +22,7 @@ namespace Opgave_2
         {
             while (true)
             {
-                Monitor.Enter(locker);
-                try
+                lock (locker)
                 {
                     for (int i = 1; i <= 60; i++)
                     {
@@ -36,11 +35,6 @@ namespace Opgave_2
                     Console.Write($" {total}\n");
 
                     Thread.Sleep(1000);
-                }
-                finally
-                {
-
-                    Monitor.Exit(locker);
                 }
             }
         }
